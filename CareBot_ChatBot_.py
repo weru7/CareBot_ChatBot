@@ -6,6 +6,7 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import webbrowser
+import csv
 
 import numpy as np
 import pandas as pd
@@ -48,8 +49,9 @@ class HyperlinkManager:
                 return
 
 # Importing the dataset
-training_dataset = pd.read_csv('Training.csv')
-test_dataset = pd.read_csv('Testing.csv')
+training_dataset = pd.read_csv(r'C:\Users\PatriciaM\jimi\CareBot_ChatBot\Training.csv')
+print(training_dataset.head(5))
+test_dataset = pd.read_csv(r'C:\Users\PatriciaM\jimi\CareBot_ChatBot\Testing.csv')
 
 # Slicing and Dicing the dataset to separate features from predictions
 X = training_dataset.iloc[:, 0:132].values
@@ -177,8 +179,10 @@ def execute_bot():
 
 # This section of code to be run after scraping the data
 
-doc_dataset = pd.read_csv('doctors_dataset.csv', names = ['Name', 'Description'])
 
+# Read the CSV file into a DataFrame
+doc_dataset = pd.read_csv(r'C:\Users\PatriciaM\jimi\CareBot_ChatBot\Doctors_dataset.csv', names = ['Name', 'Description'])
+print(doc_dataset.head())
 
 diseases = dimensionality_reduction.index
 diseases = pd.DataFrame(diseases)
